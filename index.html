@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz Master</title>
+    <!-- ===================== EXTERNAL STYLES ===================== -->
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome Icons -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div id="toast-container"></div>
+
+    <!-- ===================== NAVBAR (DESKTOP + MOBILE) ===================== -->
+    <nav
+      class="navbar sticky-top navbar-expand-md navbar-light bg-white py-3 shadow-sm"
+    >
+      <div class="container-fluid">
+        <!-- Brand Logo -->
+        <a class="navbar-brand text-success ps-4 fw-bold" href="#">
+          <i class="fas fa-graduation-cap ms-sm-2 me-1"></i>
+          QuizMaster
+        </a>
+
+        <!-- Navbar Toggler (Mobile) -->
+        <button
+          class="navbar-toggler d-md-none"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#mobileMenu"
+          aria-controls="mobileMenu"
+          aria-expanded="false"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- ===================== DESKTOP NAVIGATION ===================== -->
+        <div class="collapse navbar-collapse d-none d-md-flex" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item me-md-3 me-lg-5">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item me-md-3 me-lg-5">
+              <a class="nav-link" href="#about">About</a>
+            </li>
+            <li class="nav-item me-md-3 me-lg-5">
+              <a id="quizzes-link" class="nav-link" href="quizCards.html"
+                >Quizzes</a
+              >
+            </li>
+            <li class="nav-item me-md-3 me-lg-5">
+              <a class="nav-link" href="viewscore.html">ViewScore</a>
+            </li>
+          </ul>
+
+          <!-- Authentication Button -->
+          <button type="button" class="btn btn-success me-4">
+            <a id="auth-link-desktop" class="nav-link" href="login.html"
+              >Login</a
+            >
+          </button>
+        </div>
+
+        <!-- ===================== MOBILE OFFCANVAS MENU ===================== -->
+        <div
+          class="offcanvas offcanvas-end d-md-none"
+          tabindex="-1"
+          id="mobileMenu"
+          data-bs-backdrop="true"
+          data-bs-scroll="false"
+        >
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title text-success fw-bold">
+              <i class="fas fa-graduation-cap ms-sm-2 me-1"></i>QuizMaster
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="offcanvas"
+            ></button>
+          </div>
+
+          <div
+            class="offcanvas-body d-flex flex-column align-items-center text-center"
+          >
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#about">About</a>
+              </li>
+              <li class="nav-item">
+                <a id="quizzes-link" class="nav-link" href="quizCards.html"
+                  >Quizzes</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="viewscore.html">ViewScore</a>
+              </li>
+            </ul>
+
+            <!-- Mobile Login Button -->
+            <button class="btn btn-success w-100 mt-3">
+              <a
+                id="auth-link-mobile"
+                class="nav-link text-white"
+                href="login.html"
+                >Login</a
+              >
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ===================== HERO / LANDING SECTION ===================== -->
+    <header id="landing-page" class="bg-success-subtle">
+      <div class="container text-center">
+        <div class="row justify-content-center align-items-center">
+          <!-- Hero Image -->
+          <div class="col-10 col-md-4">
+            <img
+              src="./quiz_assets/quiz_header.png"
+              alt="Quiz Illustration"
+              class="img-fluid"
+            />
+          </div>
+
+          <!-- Hero Content -->
+          <div class="col-12 col-md-6 mb-3 mb-sm-0">
+            <h1 class="fw-bold fs-1 fs-md-5">
+              <i class="fas fa-brain me-2"></i> Challenge Your Brain!
+            </h1>
+            <p class="lead mb-4">
+              Attempt quizzes, test your knowledge, and boost your skills.
+            </p>
+            <a
+              href="quizCards.html"
+              id="start-quiz-btn"
+              class="btn btn-success me-2 mb-2"
+              >Start Quiz</a
+            >
+            <a href="#about" class="btn btn-outline-success mb-2">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ===================== FEATURED QUIZZES & HOW IT WORKS ===================== -->
+    <section id="featured" class="py-5 px-4 mx-md-5">
+      <div class="container">
+        <div class="row gy-5 align-items-start">
+          <!-- ===== FEATURED QUIZZES ===== -->
+          <div class="col-lg-6">
+            <h4 class="fw-bold mb-4 text-center text-lg-center">
+              Featured Quizzes
+            </h4>
+
+            <div class="row g-3 justify-content-center">
+              <!-- Quiz Card: Aptitude -->
+              <div class="col-6 col-md-3">
+                <div class="card border-0 shadow-lg rounded-4 h-75 py-1">
+                  <div
+                    class="card-body d-flex flex-column align-items-center mb-3"
+                  >
+                    <i class="fas fa-calculator text-primary fs-2 mb-2"></i>
+                    <h6 class="fw-semibold">Aptitude</h6>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Quiz Card: English -->
+              <div class="col-6 col-md-3">
+                <div class="card border-0 shadow-lg rounded-4 h-75 py-1">
+                  <div
+                    class="card-body d-flex flex-column align-items-center mb-3"
+                  >
+                    <i class="fas fa-book text-success fs-2 mb-2"></i>
+                    <h6 class="fw-semibold">English</h6>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Quiz Card: Programming -->
+              <div class="col-6 col-md-3">
+                <div class="card border-0 shadow-lg rounded-4 h-75 py-1">
+                  <div
+                    class="card-body d-flex flex-column align-items-center mb-3"
+                  >
+                    <i class="fas fa-code text-danger fs-2 mb-2"></i>
+                    <h6 class="fw-semibold">Programming</h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ===== HOW IT WORKS ===== -->
+          <div class="col-lg-6">
+            <h4 class="fw-bold mb-4 text-center text-lg-center">
+              How It Works
+            </h4>
+
+            <div class="row g-3 justify-content-center text-center">
+              <!-- Step 1 -->
+              <div class="col-6 col-md-3">
+                <div class="d-flex flex-column align-items-center">
+                  <div
+                    class="rounded-circle border border-success border-3 d-flex align-items-center justify-content-center mb-2"
+                    style="width: 60px; height: 60px"
+                  >
+                    <i class="fas fa-clipboard-list text-success fs-3"></i>
+                  </div>
+                  <p class="small text-muted mb-0">Pick a topic</p>
+                </div>
+              </div>
+
+              <!-- Step 2 -->
+              <div class="col-6 col-md-3">
+                <div class="d-flex flex-column align-items-center">
+                  <div
+                    class="rounded-circle border border-info border-3 d-flex align-items-center justify-content-center mb-2"
+                    style="width: 60px; height: 60px"
+                  >
+                    <i class="fas fa-lightbulb text-info fs-3"></i>
+                  </div>
+                  <p class="small text-muted mb-0">Answer questions</p>
+                </div>
+              </div>
+
+              <!-- Step 3 -->
+              <div class="col-6 col-md-3">
+                <div class="d-flex flex-column align-items-center">
+                  <div
+                    class="rounded-circle border border-warning border-3 d-flex align-items-center justify-content-center mb-2"
+                    style="width: 60px; height: 60px"
+                  >
+                    <i class="fas fa-trophy text-warning fs-3"></i>
+                  </div>
+                  <p class="small text-muted mb-0">See your score</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== ABOUT SECTION ===================== -->
+    <section class="container-fluid py-5 px-sm-5 bg-light" id="about">
+      <div class="text-center mb-4">
+        <h2 class="text-success fw-bold">
+          <i class="fas fa-question-circle me-2"></i> About QuizMaster
+        </h2>
+        <p class="text-muted">Learn. Test. Track.</p>
+      </div>
+
+      <div class="px-md-5">
+        <p class="mb-4 text-center">
+          QuizMaster is your personal hub for interactive quizzes across
+          multiple domains like Programming, Databases, Operating Systems, Web
+          Development, and more. Our goal is to make learning simple and fun by
+          letting you test yourself with quick quizzes and see how you improve
+          over time.
+        </p>
+        <div class="row">
+          <div class="col-md-6 text-center">
+            <h5 class="fw-bold mt-4">
+              <i class="fas fa-bullseye text-success me-2"></i> Our Mission
+            </h5>
+            <p>
+              To make self-learning quick and effective with instant results and
+              correct answers for every quiz.
+            </p>
+
+            <h5 class="fw-bold mt-4">
+              <i class="fas fa-lightbulb text-warning me-2"></i> Our Vision
+            </h5>
+            <p>
+              To empower learners to challenge themselves, track their progress,
+              and build confidence in their knowledge step by step.
+            </p>
+          </div>
+          <div
+            class="col-md-6 d-flex justify-content-center align-items-center"
+          >
+            <div class="text-start">
+              <h5 class="fw-bold mt-4 text-center">Why Choose QuizMaster?</h5>
+              <ul class="list-unstyled">
+                <li>
+                  <i class="fas fa-check-circle text-success me-2"></i> Quizzes
+                  with 10–20 questions
+                </li>
+                <li>
+                  <i class="fas fa-check-circle text-success me-2"></i> Instant
+                  results with correct answers
+                </li>
+                <li>
+                  <i class="fas fa-check-circle text-success me-2"></i> Track
+                  your personal score history
+                </li>
+                <li>
+                  <i class="fas fa-check-circle text-success me-2"></i> Learn
+                  anytime, anywhere
+                </li>
+              </ul>
+
+              <div class="text-center mt-4">
+                <a href="#quizzes"
+                  ><button class="btn btn-outline-warning rounded-pill">
+                    <i class="fas fa-play me-2"></i> Start a Quiz
+                  </button></a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== QUESTIONS / QUIZ CATEGORY SECTION ===================== -->
+    <section class="container-fluid" id="quizzes">
+      <div class="text-center py-5 px-sm-4">
+        <h2 class="text-success fw-bold">Choose Your Quiz</h2>
+        <p class="text-muted mb-5">
+          Test your knowledge across different topics
+        </p>
+
+        <div class="row justify-content-center g-4">
+          <!-- Programming -->
+          <div class="col-10 col-sm-6 col-md-4 col-lg-3">
+            <div class="card border-0 shadow-lg p-4 h-100">
+              <i class="fas fa-code fa-3x text-primary mb-3"></i>
+              <h5 class="fw-semibold">Programming</h5>
+              <p class="small text-muted">
+                Quizzes on programming languages like Java, C, and Python.
+              </p>
+              <a
+                href="quizCards.html#programming"
+                class="btn btn-primary px-4 mt-2"
+                >Explore</a
+              >
+            </div>
+          </div>
+
+          <!-- Core Concepts -->
+          <div class="col-10 col-sm-6 col-md-4 col-lg-3">
+            <div class="card border-0 shadow-lg p-4 h-100">
+              <i class="fas fa-cubes fa-3x text-success mb-3"></i>
+              <h5 class="fw-semibold">Core Concepts</h5>
+              <p class="small text-muted">
+                Quizzes on OOPs, DBMS, OS, and Networks.
+              </p>
+              <a
+                href="quizCards.html#core-concepts"
+                class="btn btn-success px-4 mt-2"
+                >Explore</a
+              >
+            </div>
+          </div>
+
+          <!-- Web Development -->
+          <div class="col-10 col-sm-6 col-md-4 col-lg-3">
+            <div class="card border-0 shadow-lg p-4 h-100">
+              <i class="fas fa-globe fa-3x text-warning mb-3"></i>
+              <h5 class="fw-semibold">Web Development</h5>
+              <p class="small text-muted">
+                Quizzes on HTML, CSS, React, and Node.js.
+              </p>
+              <a
+                href="quizCards.html#web-dev"
+                class="btn btn-warning text-white px-4 mt-2"
+                >Explore</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer class="bg-dark text-light pt-5">
+      <div class="container">
+        <div class="row">
+          <!-- Brand -->
+          <div class="col-md-4 mb-4">
+            <h4 class="fw-bold">QuizMaster</h4>
+            <p>
+              Test your knowledge with fun and challenging quizzes. Learn,
+              practice, and grow with us!
+            </p>
+          </div>
+
+          <!-- Quick Links -->
+          <div class="col-md-2 mb-4">
+            <h6 class="fw-bold">Quick Links</h6>
+            <ul class="list-unstyled">
+              <li>
+                <a href="index.html" class="text-light text-decoration-none"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a href="#about" class="text-light text-decoration-none"
+                  >About</a
+                >
+              </li>
+              <li>
+                <a href="quizCards.html" class="text-light text-decoration-none"
+                  >Quizzes</a
+                >
+              </li>
+              <li>
+                <a href="viewscore.html" class="text-light text-decoration-none"
+                  >View Score</a
+                >
+              </li>
+              <li>
+                <a href="login.html" class="text-light text-decoration-none"
+                  >Login</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Contact -->
+          <div class="col-md-3 mb-4">
+            <h6 class="fw-bold">Contact</h6>
+            <p>Email: support@quizmaster.com</p>
+            <p>Phone: +91 98765 43210</p>
+          </div>
+
+          <!-- Social Links -->
+          <div class="col-md-3 mb-sm-4">
+            <h6 class="fw-bold">Follow Us</h6>
+            <a href="#" class="text-light me-3"
+              ><i class="bi bi-facebook"></i
+            ></a>
+            <a href="#" class="text-light me-3"
+              ><i class="bi bi-twitter"></i
+            ></a>
+            <a href="#" class="text-light me-3"
+              ><i class="bi bi-instagram"></i
+            ></a>
+            <a href="#" class="text-light"><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+
+        <hr class="border-secondary" />
+        <div class="text-center pb-3">
+          © 2025 QuizMaster | Built with ❤️ using HTML, CSS, Bootstrap, JS.
+        </div>
+      </div>
+    </footer>
+
+    <!-- ===================== ICONS & SCRIPTS ===================== -->
+    <!-- Bootstrap Icons -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

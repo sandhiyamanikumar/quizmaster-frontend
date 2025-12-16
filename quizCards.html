@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QuizMaster</title>
+
+    <!-- Bootstrap & Icons -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <!-- ===================== NAVBAR (DESKTOP + MOBILE) ===================== -->
+    <nav
+      class="navbar sticky-top navbar-expand-md navbar-light bg-white py-3 shadow-sm"
+    >
+      <div class="container-fluid">
+        <a class="navbar-brand text-success ps-4 fw-bold" href="#">
+          <i class="fas fa-graduation-cap ms-sm-2 me-1"></i>
+          QuizMaster
+        </a>
+
+        <!-- Navbar Toggler (Mobile) -->
+        <button
+          class="navbar-toggler d-md-none"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#mobileMenu"
+          aria-controls="mobileMenu"
+          aria-expanded="false"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- ===================== DESKTOP NAVIGATION ===================== -->
+        <div class="collapse navbar-collapse d-none d-md-flex" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item me-md-3 me-lg-5">
+              <a class="nav-link" aria-current="page" href="index.html">Home</a>
+            </li>
+            <li class="nav-item me-md-3 me-lg-5">
+              <a class="nav-link" href="index.html#about">About</a>
+            </li>
+            <li class="nav-item me-md-3 me-lg-5">
+              <a id="quizzes-link" class="nav-link active" href="#">Quizzes</a>
+            </li>
+            <li class="nav-item me-md-3 me-lg-5">
+              <a class="nav-link" href="viewscore.html">ViewScore</a>
+            </li>
+          </ul>
+
+          <!-- Authentication Button -->
+          <button type="button" class="btn btn-success me-4">
+            <a id="auth-link-desktop" class="nav-link" href="login.html"
+              >Login</a
+            >
+          </button>
+        </div>
+
+        <!-- ===================== MOBILE OFFCANVAS MENU ===================== -->
+        <div
+          class="offcanvas offcanvas-end d-md-none"
+          tabindex="-1"
+          id="mobileMenu"
+          data-bs-backdrop="true"
+          data-bs-scroll="false"
+        >
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title text-success fw-bold">
+              <i class="fas fa-graduation-cap ms-sm-2 me-1"></i>QuizMaster
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="offcanvas"
+            ></button>
+          </div>
+
+          <div class="offcanvas-body d-flex flex-column align-items-center">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="index.html#about">About</a>
+              </li>
+              <li class="nav-item">
+                <a
+                  id="quizzes-link"
+                  class="nav-link active"
+                  href="quizCards.html"
+                  >Quizzes</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="viewscore.html">ViewScore</a>
+              </li>
+            </ul>
+            <button class="btn btn-success w-100 mt-3">
+              <a id="auth-link-mobile" class="nav-link" href="login.html"
+                >Login</a
+              >
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ===========================
+        EXPLORE QUIZZES SECTION
+  ============================ -->
+    <section id="explore-quizzes" class="py-sm-5 py-4 bg-white">
+      <div class="container">
+        <h2 class="fw-bold mb-4">Explore Quizzes</h2>
+
+        <!-- Filter Tabs -->
+        <ul
+          class="nav nav-pills flex-nowrap gap-2 mb-4 justify-content-start overflow-auto"
+          id="quizFilter"
+        >
+          <li class="nav-item">
+            <button
+              class="nav-link active"
+              data-bs-toggle="pill"
+              data-bs-target="#all"
+            >
+              All Quizzes
+            </button>
+          </li>
+          <li class="nav-item">
+            <button
+              class="nav-link"
+              data-bs-toggle="pill"
+              data-bs-target="#programming"
+            >
+              Programming Language
+            </button>
+          </li>
+          <li class="nav-item">
+            <button
+              class="nav-link"
+              data-bs-toggle="pill"
+              data-bs-target="#coreConcepts"
+            >
+              Core CS Concepts
+            </button>
+          </li>
+          <li class="nav-item">
+            <button
+              class="nav-link"
+              data-bs-toggle="pill"
+              data-bs-target="#webDevelopment"
+            >
+              Web Development
+            </button>
+          </li>
+        </ul>
+
+        <!-- Tab Content -->
+        <div class="tab-content mt-4">
+          <!-- All -->
+          <div class="tab-pane fade show active" id="all">
+            <div class="row g-lg-4 g-2 mb-4">
+              <!-- C -->
+              <div class="col-md-4">
+                <div class="card p-4 h-100 text-center rounded-4 shadow-lg">
+                  <img
+                    src="quiz_assets/c_logo.png"
+                    alt="C Logo"
+                    width="60"
+                    class="mx-auto mb-3"
+                  />
+                  <h5 class="fw-bold">C Language</h5>
+                  <p class="text-muted">
+                    Practice core concepts of C programming.
+                  </p>
+                  <a
+                    href="quiz.html?category=programming&topic=c"
+                    class="btn btn-danger rounded-4 w-75 d-block mx-auto"
+                    data-category="programming"
+                    data-topic="c"
+                    >Start Quiz</a
+                  >
+                </div>
+              </div>
+
+              <!-- Java -->
+              <div class="col-md-4">
+                <div class="card p-4 h-100 text-center rounded-4 shadow-lg">
+                  <img
+                    src="quiz_assets/java_logo.png"
+                    alt="Java Logo"
+                    width="65"
+                    class="mx-auto mb-3"
+                  />
+                  <h5 class="fw-bold">Java</h5>
+                  <p class="text-muted">
+                    Test your OOP and Java coding skills.
+                  </p>
+                  <a
+                    href="quiz.html?category=programming&topic=java"
+                    class="btn btn-danger rounded-4 w-75 d-block mx-auto"
+                    >Start Quiz</a
+                  >
+                </div>
+              </div>
+
+              <!-- Python -->
+              <div class="col-md-4">
+                <div class="card p-4 h-100 text-center rounded-4 shadow-lg">
+                  <img
+                    src="quiz_assets/Python_logo.png"
+                    alt="Python Logo"
+                    width="63"
+                    class="mx-auto mb-3"
+                  />
+                  <h5 class="fw-bold">Python</h5>
+                  <p class="text-muted">
+                    Solve quizzes on Python basics and logic.
+                  </p>
+                  <a
+                    href="quiz.html?category=programming&topic=python"
+                    class="btn btn-danger rounded-4 w-75 d-block mx-auto"
+                    >Start Quiz</a
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="row g-lg-4 g-2 mb-4">
+              <!-- OOPs -->
+              <div class="col-md-6 col-lg-3">
+                <div class="card p-4 h-100 text-center rounded-4 shadow-lg">
+                  <i class="fas fa-cubes fa-3x text-secondary mb-3"></i>
+                  <h5 class="fw-bold">OOPs</h5>
+                  <p class="text-muted">
+                    Understand classes, objects, inheritance.
+                  </p>
+                  <a
+                    href="quiz.html?category=coreConcepts&topic=oops"
+                    class="btn btn-danger rounded-4 w-75 d-block mx-auto"
+                    >Start Quiz</a
+                  >
+                </div>
+              </div>
+
+              <!-- DBMS -->
+              <div class="col-md-6 col-lg-3">
+                <div class="card p-4 h-100 text-center rounded-4 shadow-lg">
+                  <i class="fas fa-database fa-3x text-secondary mb-3"></i>
+                  <h5 class="fw-bold">DBMS</h5>
+                  <p class="text-muted">Quizzes on SQL and database design.</p>
+                  <a
+                    href="quiz.html?category=coreConcepts&topic=dbms"
+                    class="btn btn-danger rounded-4 w-75 d-block mx-auto"
+                    >Start Quiz</a
+                  >
+                </div>
+              </div>
+
+              <!-- OS -->
+              <div class="col-md-6 col-lg-3">
+                <div class="card p-4 h-100 text-center rounded-4 shadow-lg">
+                  <i class="fas fa-desktop fa-3x text-secondary mb-3"></i>
+                  <h5 class="fw-bold">Operating Systems</h5>
+                  <p class="text-muted">Memory, processes, scheduling, more.</p>
+                  <a
+                    href="quiz.html?category=coreConcepts&topic=os"
+                    class="btn btn-danger rounded-4 w-75 d-block mx-auto"
+                    >Start Quiz</a
+                  >
+                </div>
+              </div>
+
+              <!-- Networks -->
+              <div class="col-md-6 col-lg-3">
+                <div class="card p-4 h-100 text-center rounded-4 shadow-lg">
+                  <i class="fas fa-network-wired fa-3x text-secondary mb-3"></i>
+                  <h5 class="fw-bold">Networks</h5>
+                  <p class="text-muted">
+                    Explore networking basics and protocols.
+                  </p>
+                  <a
+                    href="quiz.html?category=coreConcepts&topic=networks"
+                    class="btn btn-danger rounded-4 w-75 d-block mx-auto"
+                    >Start Quiz</a
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="row g-lg-4 g-2 mb-4">
+              <!-- HTML -->
+              <div class="col-md-6 col-lg-3">
+                <div class="card p-4 h-100 text-center rounded-4 shadow-lg">
+                  <i class="fab fa-html5 fa-3x text-danger mb-3"></i>
+                  <h5 class="fw-bold">HTML</h5>
+                  <p class="text-muted">Basics of HTML structure and tags.</p>
+                  <a
+                    href="quiz.html?category=webDev&topic=html"
+                    class="btn btn-danger rounded-4 w-75 d-block mx-auto"
+                    >Start Quiz</a
+                  >
+                </div>
+              </div>
+
+              <!-- CSS -->
+              <div class="col-md-6 col-lg-3">
+                <div class="card p-4 h-100 text-center rounded-4 shadow-lg">
+                  <i class="fab fa-css3-alt fa-3x text-primary mb-3"></i>
+                  <h5 class="fw-bold">CSS</h5>
+                  <p class="text-muted">
+                    Test styling, layouts, and selectors.
+                  </p>
+                  <a
+                    href="quiz.html?category=webDev&topic=css"
+                    class="btn btn-danger rounded-4 w-75 d-block mx-auto"
+                    >Start Quiz</a
+                  >
+                </div>
+              </div>
+
+              <!-- React -->
+              <div class="col-md-6 col-lg-3">
+                <div class="card p-4 h-100 text-center rounded-4 shadow-lg">
+                  <i class="fab fa-react fa-3x text-info mb-3"></i>
+                  <h5 class="fw-bold">React JS</h5>
+                  <p class="text-muted">Component-based quiz challenges.</p>
+                  <a
+                    href="quiz.html?category=webDev&topic=reactjs"
+                    class="btn btn-danger rounded-4 w-75 d-block mx-auto"
+                    >Start Quiz</a
+                  >
+                </div>
+              </div>
+
+              <!-- Node.js -->
+              <div class="col-md-6 col-lg-3">
+                <div class="card p-4 h-100 text-center rounded-4 shadow-lg">
+                  <i class="fab fa-node-js fa-3x text-success mb-3"></i>
+                  <h5 class="fw-bold">Node.js</h5>
+                  <p class="text-muted">Backend concepts using Node.js.</p>
+                  <a
+                    href="quiz.html?category=webDev&topic=nodejs"
+                    class="btn btn-danger rounded-4 w-75 d-block mx-auto"
+                    >Start Quiz</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Programming -->
+          <div class="tab-pane fade" id="programming">
+            <div class="row g-2 g-lg-4">
+              <!-- C -->
+              <div class="col-md-4">
+                <div class="card p-4 h-100 text-center rounded-4 shadow-lg">
+                  <img
+                    src="quiz_assets/c_logo.png"
+                    alt="C Logo"
+                    width="60"
+                    class="mx-auto mb-3"
+                  />
+                  <h5 class="fw-bold">C Language</h5>
+                  <p class="text-muted">
+                    Practice core concepts of C programming.
+                  </p>
+                  <a
+                    href="quiz.html?category=programming&topic=c"
+                    class="btn btn-danger rounded-4 w-75 d-block mx-auto"
+                    >Start Quiz</a
+                  >
+                </div>
+              </div>
+
+              <!-- Java -->
+              <div class="col-md-4">
+                <div class="card p-4 h-100 text-center rounded-4 shadow-lg">
+                  <img
+                    src="quiz_assets/java_logo.png"
+                    alt="Java Logo"
+                    width="65"
+                    class="mx-auto mb-3"
+                  />
+                  <h5 class="fw-bold">Java</h5>
+                  <p class="text-muted">
+                    Test your OOP and Java coding skills.
+                  </p>
+                  <a
+                    href="quiz.html?category=programming&topic=java"
+                    class="btn btn-danger rounded-4 w-75 d-block mx-auto"
+                    >Start Quiz</a
+                  >
+                </div>
+              </div>
+
+              <!-- Python -->
+              <div class="col-md-4">
+                <div class="card p-4 h-100 text-center rounded-4 shadow-lg">
+                  <img
+                    src="quiz_assets/Python_logo.png"
+                    alt="Python Logo"
+                    width="63"
+                    class="mx-auto mb-3"
+                  />
+                  <h5 class="fw-bold">Python</h5>
+                  <p class="text-muted">
+                    Solve quizzes on Python basics and logic.
+                  </p>
+                  <a
+                    href="quiz.html?category=programming&topic=python"
+                    class="btn btn-danger rounded-4 w-75 d-block mx-auto"
+                    >Start Quiz</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Core CS -->
+          <div class="tab-pane fade" id="coreConcepts">
+            <div class="row g-lg-4 g-2">
+              <!-- OOPs -->
+              <div class="col-md-4 col-lg-3">
+                <div class="card p-4 h-100 text-center rounded-4 shadow-lg">
+                  <i class="fas fa-cubes fa-3x text-secondary mb-3"></i>
+                  <h5 class="fw-bold">OOPs</h5>
+                  <p class="text-muted">
+                    Understand classes, objects, inheritance.
+                  </p>
+                  <a
+                    href="quiz.html?category=coreConcepts&topic=oops"
+                    class="btn btn-danger rounded-4 w-75 d-block mx-auto"
+                    >Start Quiz</a
+                  >
+                </div>
+              </div>
+
+              <!-- DBMS -->
+              <div class="col-md-4 col-lg-3">
+                <div class="card p-4 h-100 text-center rounded-4 shadow-lg">
+                  <i class="fas fa-database fa-3x text-secondary mb-3"></i>
+                  <h5 class="fw-bold">DBMS</h5>
+                  <p class="text-muted">Quizzes on SQL and database design.</p>
+                  <a
+                    href="quiz.html?category=coreConcepts&topic=dbms"
+                    class="btn btn-danger rounded-4 w-75 d-block mx-auto"
+                    >Start Quiz</a
+                  >
+                </div>
+              </div>
+
+              <!-- OS -->
+              <div class="col-md-4 col-lg-3">
+                <div class="card p-4 h-100 text-center rounded-4 shadow-lg">
+                  <i class="fas fa-desktop fa-3x text-secondary mb-3"></i>
+                  <h5 class="fw-bold">Operating Systems</h5>
+                  <p class="text-muted">Memory, processes, scheduling, more.</p>
+                  <a
+                    href="quiz.html?category=coreConcepts&topic=os"
+                    class="btn btn-danger rounded-4 w-75 d-block mx-auto"
+                    >Start Quiz</a
+                  >
+                </div>
+              </div>
+
+              <!-- Networks -->
+              <div class="col-md-4 col-lg-3">
+                <div class="card p-4 h-100 text-center rounded-4 shadow-lg">
+                  <i class="fas fa-network-wired fa-3x text-secondary mb-3"></i>
+                  <h5 class="fw-bold">Networks</h5>
+                  <p class="text-muted">
+                    Explore networking basics and protocols.
+                  </p>
+                  <a
+                    href="quiz.html?category=coreConcepts&topic=networks"
+                    class="btn btn-danger rounded-4 w-75 d-block mx-auto"
+                    >Start Quiz</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Web Development -->
+          <div class="tab-pane fade" id="webDevelopment">
+            <div class="row g-2 g-lg-4">
+              <!-- HTML -->
+              <div class="col-md-4 col-lg-3">
+                <div class="card p-4 h-100 text-center rounded-4 shadow-lg">
+                  <i class="fab fa-html5 fa-3x text-danger mb-3"></i>
+                  <h5 class="fw-bold">HTML</h5>
+                  <p class="text-muted">Basics of HTML structure and tags.</p>
+                  <a
+                    href="quiz.html?category=webDev&topic=html"
+                    class="btn btn-danger rounded-4 w-75 d-block mx-auto"
+                    >Start Quiz</a
+                  >
+                </div>
+              </div>
+              <!-- CSS -->
+              <div class="col-md-4 col-lg-3">
+                <div class="card p-4 h-100 text-center rounded-4 shadow-lg">
+                  <i class="fab fa-css3-alt fa-3x text-primary mb-3"></i>
+                  <h5 class="fw-bold">CSS</h5>
+                  <p class="text-muted">
+                    Test styling, layouts, and selectors.
+                  </p>
+                  <a
+                    href="quiz.html?category=webDev&topic=css"
+                    class="btn btn-danger rounded-4 w-75 d-block mx-auto"
+                    >Start Quiz</a
+                  >
+                </div>
+              </div>
+              <!-- React -->
+              <div class="col-md-4 col-lg-3">
+                <div class="card p-4 h-100 text-center rounded-4 shadow-lg">
+                  <i class="fab fa-react fa-3x text-info mb-3"></i>
+                  <h5 class="fw-bold">React JS</h5>
+                  <p class="text-muted">Component-based quiz challenges.</p>
+                  <a
+                    href="quiz.html?category=webDev&topic=reactjs"
+                    class="btn btn-danger rounded-4 w-75 d-block mx-auto"
+                    >Start Quiz</a
+                  >
+                </div>
+              </div>
+              <!-- Node.js -->
+              <div class="col-md-4 col-lg-3">
+                <div class="card p-4 h-100 text-center rounded-4 shadow-lg">
+                  <i class="fab fa-node-js fa-3x text-success mb-3"></i>
+                  <h5 class="fw-bold">Node.js</h5>
+                  <p class="text-muted">Backend concepts using Node.js.</p>
+                  <a
+                    href="quiz.html?category=webDev&topic=nodejs"
+                    class="btn btn-danger rounded-4 w-75 d-block mx-auto"
+                    >Start Quiz</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===========================
+        FOOTER
+  ============================ -->
+    <footer class="bg-dark text-light pt-5">
+      <div class="container">
+        <div class="row">
+          <!-- Brand -->
+          <div class="col-md-4 mb-4">
+            <h4 class="fw-bold">QuizMaster</h4>
+            <p>
+              Test your knowledge with fun and challenging quizzes. Learn,
+              practice, and grow with us!
+            </p>
+          </div>
+          <!-- Quick Links -->
+          <div class="col-md-2 mb-4">
+            <h6 class="fw-bold">Quick Links</h6>
+            <ul class="list-unstyled">
+              <li>
+                <a href="#" class="text-light text-decoration-none">Home</a>
+              </li>
+              <li>
+                <a href="#about" class="text-light text-decoration-none"
+                  >About</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#explore-quizzes"
+                  class="text-light text-decoration-none"
+                  >Quizzes</a
+                >
+              </li>
+              <li>
+                <a href="viewscore.html" class="text-light text-decoration-none"
+                  >View Score</a
+                >
+              </li>
+            </ul>
+          </div>
+          <!-- Contact -->
+          <div class="col-md-3 mb-4">
+            <h6 class="fw-bold">Contact</h6>
+            <p>Email: support@quizmaster.com</p>
+            <p>Phone: +91 98765 43210</p>
+          </div>
+          <!-- Social -->
+          <div class="col-md-3 mb-4">
+            <h6 class="fw-bold">Follow Us</h6>
+            <a href="#" class="text-light me-3"
+              ><i class="bi bi-facebook"></i
+            ></a>
+            <a href="#" class="text-light me-3"
+              ><i class="bi bi-twitter"></i
+            ></a>
+            <a href="#" class="text-light me-3"
+              ><i class="bi bi-instagram"></i
+            ></a>
+            <a href="#" class="text-light"><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+        <hr class="border-secondary" />
+        <div class="text-center pb-3">
+          © 2025 QuizMaster | Built with ❤️ using Bootstrap, HTML & JS.
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

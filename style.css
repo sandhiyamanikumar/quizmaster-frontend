@@ -1,0 +1,205 @@
+/* ===========================
+   GLOBAL RESET & LAYOUT
+============================ */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* ===========================
+   NAVBAR STYLES
+============================ */
+.navbar-nav .nav-link {
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+/* Animated underline (hover + active) */
+.navbar-nav .nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 3px;
+  background-color: #198754;
+  border-radius: 2px;
+  transform: translateX(50%);
+  transition: all 0.4s ease;
+}
+
+/* Hover underline */
+.navbar-nav .nav-link:hover::after {
+  width: 50%;
+  left: 25%;
+  transform: translateX(0);
+}
+
+/* Active link underline */
+.navbar-nav .nav-link.active::after {
+  width: 50%;
+  left: 25%;
+}
+
+/* Navbar toggler (mobile) */
+.navbar-toggler {
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
+.navbar-toggler:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Offcanvas width for mobile */
+.offcanvas.offcanvas-end {
+  width: 70% !important;
+}
+
+/* ===========================
+   LANDING / HERO SECTION
+============================ */
+#landing-page img {
+  max-height: 200px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* Larger screens */
+@media (min-width: 768px) {
+  #landing-page img {
+    max-height: 300px;
+  }
+}
+
+/* ===========================
+   FEATURED QUIZZES
+============================ */
+#featured-quizzes {
+  background-color: #fff;
+  border-radius: 20px;
+}
+
+#featured-quizzes .card {
+  transition: transform 0.3s ease;
+}
+
+#featured-quizzes .card:hover {
+  transform: translateY(-5px);
+}
+
+/* ===========================
+   QUIZ SECTION
+============================ */
+#quiz-section button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Answer option buttons */
+.option-btn {
+  width: 100%;
+  max-width: 500px;
+  margin-bottom: 10px;
+  border-radius: 12px;
+  border: 1.5px solid #198754;
+  transition: all 0.3s ease;
+}
+
+.option-btn:hover,
+.option-btn.active {
+  background-color: #198754;
+  color: #fff !important;
+}
+
+/* ===========================
+   QUIZ RESULT / SCORE
+============================ */
+.circle-outer-score {
+  width: 85px;
+  height: 85px;
+  border-radius: 50%;
+}
+
+.circle-score {
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(13, 110, 253, 0.3);
+}
+
+.quiz-result-section {
+  overflow-x: hidden;
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===========================
+   QUIZ FILTER TABS
+============================ */
+#quizFilter .nav-link {
+  background-color: #f8f9fa;
+  color: green;
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-weight: 500;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+#quizFilter .nav-link:hover {
+  background-color: #e9ecef;
+}
+
+#quizFilter .nav-link.active {
+  color: green;
+  border-bottom: 3px solid green;
+  font-weight: 600;
+}
+
+/* ===========================
+   FORMS & INPUTS
+============================ */
+.custom-input,
+.custom-form-btn {
+  padding-top: 0.4rem !important;
+  padding-bottom: 0.4rem !important;
+  font-size: 1rem !important;
+}
+
+/* ===========================
+   QUIZ CARDS & BUTTONS
+============================ */
+.quiz-card {
+  max-width: 800px;
+  width: 100%;
+  border-radius: 15px;
+}
+
+/* Answer buttons container */
+#answer-buttons .btn {
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 10px;
+  border-radius: 15px;
+}
+
+/* Navigation buttons (Prev / Next) */
+#nav-btns button {
+  min-width: 120px;
+}
